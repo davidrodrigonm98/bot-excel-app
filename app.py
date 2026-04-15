@@ -3,10 +3,12 @@ import pandas as pd
 from datetime import datetime
 import io
 
-st.title("📊 Generador de Cortes - APTOS")
+st.title("📊 Sistema de Procesamiento de Registros")
+st.markdown("### 🔍 Filtrado, validación y generación de cortes en tiempo real")
 
 # Subir archivo
 archivo = st.file_uploader("Sube tu archivo Excel", type=["xlsx"])
+st.info("📁 Sube un archivo Excel con columnas DNI y ESTADO")
 
 if archivo:
     df = pd.read_excel(archivo)
@@ -34,8 +36,13 @@ if archivo:
         duplicados = total_aptos - total_limpios
 
         # 🔹 Mostrar resultados
-        st.success(f"✅ Total APTOS (sin duplicados): {total_limpios}")
-        st.warning(f"⚠️ Duplicados encontrados: {duplicados}")
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.metric("✅ APTOS LIMPIOS", total_limpios)
+
+        with col2:
+            st.metric("⚠️ DUPLICADOS", duplicados)
 
         # 🔹 Botón generar corte
         if st.button("🚀 Generar Corte"):
