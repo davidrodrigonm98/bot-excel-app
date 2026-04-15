@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 import io
+import pytz
 
 st.title("📊 Sistema de Procesamiento de Registros")
 st.markdown("### 🔍 Filtrado, validación y generación de cortes en tiempo real")
@@ -46,7 +47,8 @@ if archivo:
 
         # 🔹 Botón generar corte
         if st.button("🚀 Generar Corte"):
-            fecha_hora = datetime.now().strftime("%d-%m-%y_%H-%M")
+            zona_peru = pytz.timezone("America/Lima")
+            fecha_hora = datetime.now(zona_peru).strftime("%d-%m-%y_%H-%M")
             nombre_archivo = f"CORTE - {fecha_hora}.xlsx"
 
             if total_limpios > 0:
