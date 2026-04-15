@@ -11,6 +11,29 @@ hora_actual = datetime.now(zona_peru).strftime("%d/%m/%y %H:%M")
 
 st.metric("🕒 Hora actual (Perú)", hora_actual)
 
+# 📄 PLANTILLA
+st.subheader("📄 Descargar plantilla base")
+
+plantilla = pd.DataFrame({
+    "DNI": ["12345678"],
+    "NOMBRE": ["Juan"],
+    "APELLIDO": ["Perez"],
+    "CORREO": ["juan@email.com"],
+    "CELULAR": ["987654321"],
+    "ESTADO": ["APTO"]
+})
+
+buffer_plantilla = io.BytesIO()
+plantilla.to_excel(buffer_plantilla, index=False)
+buffer_plantilla.seek(0)
+
+st.download_button(
+    label="📥 Descargar plantilla Excel",
+    data=buffer_plantilla,
+    file_name="plantilla_registros.xlsx",
+    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+)
+
 # Subir archivo
 archivo = st.file_uploader("Sube tu archivo Excel", type=["xlsx"])
 st.info("📁 Sube un archivo Excel con columnas DNI y ESTADO")
