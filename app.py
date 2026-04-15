@@ -71,6 +71,10 @@ if archivo:
 
         with col2:
             st.metric("⚠️ DUPLICADOS", duplicados)
+
+        col1, col2, col3 = st.columns([1, 2, 1])
+
+        with col2:
             st.success(f"Se encontraron {total_limpios} registros aptos únicos y {duplicados} duplicados.")
 
         # 🔹 Botón generar corte
