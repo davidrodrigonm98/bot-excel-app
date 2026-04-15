@@ -46,8 +46,8 @@ if archivo:
 
         # 🔹 Botón generar corte
         if st.button("🚀 Generar Corte"):
-            hora_actual = datetime.now().strftime("%H-%M")
-            nombre_archivo = f"CORTE - {hora_actual}.xlsx"
+            fecha_hora = datetime.now().strftime("%d-%m-%y_%H-%M")
+            nombre_archivo = f"CORTE - {fecha_hora}.xlsx"
 
             if total_limpios > 0:
                 # Crear archivo en memoria
