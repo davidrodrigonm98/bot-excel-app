@@ -36,7 +36,7 @@ st.download_button(
 
 # Subir archivo
 archivo = st.file_uploader("Sube tu archivo Excel", type=["xlsx"])
-st.info("📁 Sube un archivo Excel con columnas DNI y ESTADO")
+st.info("📁 Sube un archivo Excel con las columnas: DNI y ESTADO (valores: APTO / NO APTO)")
 
 if archivo:
     df = pd.read_excel(archivo)
@@ -84,7 +84,7 @@ if archivo:
                 aptos_sin_duplicados.to_excel(buffer, index=False)
                 buffer.seek(0)
 
-                st.success(f"📁 Archivo listo: {nombre_archivo}")
+                st.success(f"📂 Archivo generado correctamente: {nombre_archivo}")
 
                 # Botón de descarga
                 st.download_button(
