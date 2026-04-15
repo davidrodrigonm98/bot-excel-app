@@ -9,7 +9,7 @@ st.markdown("### 🔍 Filtrado, validación y generación de cortes en tiempo re
 zona_peru = pytz.timezone("America/Lima")
 hora_actual = datetime.now(zona_peru).strftime("%d/%m/%y %H:%M")
 
-st.caption(f"🕒 Hora actual (Perú): {hora_actual}")
+st.metric("🕒 Hora actual (Perú)", hora_actual)
 
 # Subir archivo
 archivo = st.file_uploader("Sube tu archivo Excel", type=["xlsx"])
