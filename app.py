@@ -6,6 +6,10 @@ import pytz
 
 st.title("📊 Sistema de Procesamiento de Registros")
 st.markdown("### 🔍 Filtrado, validación y generación de cortes en tiempo real")
+zona_peru = pytz.timezone("America/Lima")
+hora_actual = datetime.now(zona_peru).strftime("%d/%m/%y %H:%M")
+
+st.caption(f"🕒 Hora actual (Perú): {hora_actual}")
 
 # Subir archivo
 archivo = st.file_uploader("Sube tu archivo Excel", type=["xlsx"])
